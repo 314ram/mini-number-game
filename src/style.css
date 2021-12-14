@@ -15,7 +15,8 @@ body{
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 100%;
+  height: 100vw;
+  min-height: 100%;
   background: linear-gradient(-45deg,#A8D8EA,#AA96DA,#FCBAD3);
   background-size: 500%;
   animation: change 60s ease-in-out infinite;
@@ -49,7 +50,7 @@ body{
   display: flex;
   justify-content: center;
   font-size: 24px;
-  cursor: pointer;
+  /*cursor: pointer;*/
   background: linear-gradient(
     -45deg,
   rgb(255, 255, 255,0.1),
@@ -144,8 +145,14 @@ body{
 .bottom{
   margin-top: 30px;
   width: 400px;
-  height: 40px;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.two-part{
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 .timer{
@@ -167,7 +174,7 @@ body{
   margin-right: 20px;
   font-size:30px;
 }
-.startButton{
+.resetButton{
   background-color: rgb(234, 234, 234,0.7) ;
   width: 180px;
   height: 40px;
@@ -179,5 +186,20 @@ body{
   font-weight: bold;
   border-radius: 20px;
   color: black;
+}
+.startButton{
+  background-color: rgb(234, 234, 234,0.7) ;
+  width: 70%;
+  height: 40px;
+  border: 2px solid black;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 20px;
+  color: black;
   cursor: pointer;
+  margin-top: 15px;
+  align-self: center;
 }
