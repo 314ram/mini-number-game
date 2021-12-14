@@ -96,12 +96,24 @@ let chosenPair = 0
 
 //chosing pair box
 const pairBoxes = document.querySelectorAll('.upperBox')
+const borderColor = ['#FF0013','#13FF00','#0013FF']
+const backgroundColor = [
+  'linear-gradient(-45deg, rgb(255, 0, 19, 0.2), rgb(255, 0, 19, 0.7))',
+  'linear-gradient(-45deg, rgb(19, 255, 0, 0.2), rgb(19, 255, 0, 0.7))',
+  'linear-gradient( -45deg, rgb(0, 19, 255, 0.2), rgb(0, 19, 255, 0.7))'
+]
+for(let i=0;i<pairBoxes.length;i++){
+  //pairBoxes[i].style.border="solid 2px "+borderColor[i]
+  pairBoxes[i].style.background=backgroundColor[i]
+}
 let chosenNumberBox = []
+
 //funtion for select the box,number,operator
 function chosePairBox(){
   if(!isStarted){
     return
   }
+  //numberBox.style.background = null
   chosenBox = this
   chosenNumber=[]
   chosenNumberBox.forEach(box => box.addEventListener('click',getNumber))
@@ -115,7 +127,7 @@ pairBoxes.forEach(box => box.addEventListener('click',chosePairBox))
 
 
 function getNumber(){
-  if( typeof chosenBox == 'undefined'){
+  if( typeof chosenBox == 'undefined' || this.style.background != ''){
     return
   }
   if(chosenNumber.length==1 && chosenOperator.length==0){
@@ -124,16 +136,19 @@ function getNumber(){
     return
   }
 
+
   number = Number(this.textContent)
   chosenNumber.push(number)
   chosenNumberBox.push(this)
-
+  this.style.background=chosenBox.style.background
+  
   if(chosenNumber.length==2 && chosenOperator.length==1){
     if(chosenOperator[0]=='+'){
       result = chosenNumber[0]+chosenNumber[1]
       chosenBox.textContent = result
       chosenNumber=[]
       chosenOperator=[]
+      this.style.background=chosenBox.style.background
       delete chosenBox  
       ceckTotal()
     }else if(chosenOperator[0]=='-'){
@@ -141,6 +156,7 @@ function getNumber(){
       chosenBox.textContent = result
       chosenNumber=[]
       chosenOperator=[]
+      this.style.background=chosenBox.style.background
       delete chosenBox
       ceckTotal()
     }
@@ -166,13 +182,22 @@ function getOperator(){
 }
 operator.forEach(e => e.addEventListener('click',getOperator))
 
-startButton = document.querySelector('.startButton')
+resetButton = document.querySelector('.resetButton')
+function reset(){
+  numberBox.forEach(e=>e.style.background='')
+  pairBoxes.forEach(e=>e.textContent='')
+}
+resetButton.addEventListener('click',reset)
 
+
+startButton = document.querySelector('.startButton')
 function start(){
   isStarted = true
   timeCount = 0
   timer = setInterval(startTimer,1000)
   startButton.textContent = 'STOP'
+  resetButton.style.cursor='pointer'
+  pairBoxes.forEach(e=>e.style.cursor = 'pointer')
   //adding the selected numbers to number boxes  
   for(let i=0;i<numberBox.length;i++){                      
     number = document.createTextNode(selectedNumber[i])
@@ -181,12 +206,17 @@ function start(){
 
   startButton.addEventListener('click',changeButton, {once: true})
 }
-
 startButton.addEventListener('click',start, {once: true})
 
 
 function changeButton(){
   clearInterval(timer)
+  resetButton.style.cursor = ''
+  numberBox.forEach(e=>e.style.cursor = '')
+  operator.forEach(e=>e.style.cursor = '')
+  pairBoxes.forEach(e=>e.style.cursor = '')
+  resetButton.removeEventListener('click',reset)
+  numberBox.forEach(e=>e.removeEventListener('click',getNumber))
   startButton.textContent='RESTART'
   startButton.addEventListener('click',()=>{location.reload()}, {once: true})
 }
