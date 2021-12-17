@@ -110,7 +110,7 @@ let chosenNumberBox = []
 
 //funtion for select the box,number,operator
 function chosePairBox(){
-  if(!isStarted){
+  if(!isStarted || this.textContent != ''){
     return
   }
   //numberBox.style.background = null
@@ -131,11 +131,11 @@ function getNumber(){
     return
   }
   if(chosenNumber.length==1 && chosenOperator.length==0){
+    chosenNumberBox[0].style.background = ''
     chosenNumber=[]
     delete chosenBox
     return
   }
-
 
   number = Number(this.textContent)
   chosenNumber.push(number)
@@ -176,7 +176,7 @@ function getOperator(){
     chosenNumber=[]
     delete chosenBox
     return
-  }  
+  }
   theOperator = this.textContent
   return chosenOperator.push(theOperator) 
 }
@@ -228,8 +228,13 @@ ceckTotal = ()=>{
   for(let i=0;i<filledPairBoxes.length;i++){
     pairBoxesNumbers += Number(filledPairBoxes[i].textContent)
   }
-  if(pairBoxesNumbers == question){
+  if(pairBoxesNumbers == question && filledPairBoxes[0].textContent != '' && filledPairBoxes[1].textContent != '' && filledPairBoxes[2].textContent != ''){
     clearInterval(timer)
+    resetButton.style.cursor = ''
+    numberBox.forEach(e=>e.style.cursor = '')
+    operator.forEach(e=>e.style.cursor = '')
+    pairBoxes.forEach(e=>e.style.cursor = '')
+    resetButton.removeEventListener('click',reset)
     startButton.textContent = 'YOU WON!'
     isStarted = false
     setTimeout(()=>{alert('YOU WON BY '+timeCount+' SECONDS!')},500)
