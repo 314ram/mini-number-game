@@ -56,6 +56,9 @@ body{
   rgb(255, 255, 255,0.1),
   rgb(255, 255, 255,0.5));
 }
+.upperBox:active{
+  border: solid black 8px;
+}
 .upperOperator{
   display: inline-block;
   font-size: 30px;
@@ -117,6 +120,9 @@ body{
 #box4{
   border-radius: 0px 0px 0px 20px;
 }
+.numberBox:active{
+  border: solid black 8px;
+}
 .operators{
   width: 50px;
   height: 220px;
@@ -140,6 +146,9 @@ body{
 }
 .substract{
   border-radius: 0px 0px 20px 0px;
+}
+.operator:active{
+  border: solid black 8px;
 }
 
 .bottom{
@@ -187,6 +196,9 @@ body{
   border-radius: 20px;
   color: black;
 }
+.resetButton:active{
+  border: solid black 8px;
+}
 .startButton{
   background-color: rgb(234, 234, 234,0.7) ;
   width: 70%;
@@ -202,4 +214,7 @@ body{
   cursor: pointer;
   margin-top: 15px;
   align-self: center;
+}
+.startButton:active{
+  border: solid black 8px;
 }
