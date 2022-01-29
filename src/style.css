@@ -152,7 +152,7 @@ body{
 }
 
 .bottom{
-  margin-top: 30px;
+  margin-top: 5px;
   width: 400px;
   height: 100%;
   display: flex;
@@ -201,7 +201,7 @@ body{
 }
 .startButton{
   background-color: rgb(234, 234, 234,0.7) ;
-  width: 70%;
+  width: 100%;
   height: 40px;
   border: 2px solid black;
   align-items: center;
@@ -212,9 +212,29 @@ body{
   border-radius: 20px;
   color: black;
   cursor: pointer;
-  margin-top: 15px;
+  margin: 30px 0 50px 0;
   align-self: center;
 }
 .startButton:active{
   border: solid black 8px;
+}
+
+.howTo{
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  align-items: center;
+}
+.description{
+  height: 0px;
+  overflow: hidden;
+}
+.expand-active{
+  height: 100%;
+}
+ol{
+  padding-left: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
