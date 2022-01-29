@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Mini Number Game</title>
+    <title>Memory Counting</title>
     <link rel="stylesheet" href="src/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id='background'></div>
@@ -43,6 +44,36 @@
       </div>
       <div class="startButton">START</div>
     </div>
+
+    <div class="howTo">
+      <!-- <h3 class="descHeader">How to play</h3> -->
+      <div class="showHolder">
+        <span expand-more
+        data-hidetext="How to Play <-"
+        data-showtext="How to Play ->"
+        data-target="description"
+        class="btn-expand">
+        How to Play ->
+        </span>
+      </div>
+      <div class="description" id="description">
+        <p>
+          <!-- The game is simple, six random numbers will be given and the player should make three paired of every two numbers with an operator of addition or subtraction so that sum of those three paired numbers equals the "question cell". the "question cell" is located on the top-right.
+          <br> -->
+          <ol>
+            <li>Click the "START" button</li>
+            <li>Choose one of three cells (red, green, blue) in the upper section</li>
+            <li>Choose the first number from the six option</li>
+            <li>Choose the operator</li>
+            <li>Choose the second number</li>
+            <li>Repeat the process to all of three cells until its sum equals the "question cell" on the top-right</li>
+            <li>"RESET" can be used to remove all the numbers you chose before in case you guessed it wrong</li>
+            <li>Every number can only be chosen once</li>
+          </ol>
+        </p>
+      </div>
+    </div>
+
     <script src="src/index.js"></script>
   </body>
 </html>
