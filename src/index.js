@@ -82,7 +82,7 @@ function startTimer(){
   timeCount +=1
   timeCountInBox = document.createTextNode(timeCount)
   return time.appendChild(timeCountInBox)
-}//setInterval(startTimer,1000)
+}
 
 //chosing number function
 let chosenNumber = []
@@ -103,8 +103,7 @@ const backgroundColor = [
   'linear-gradient( -45deg, rgb(0, 19, 255, 0.2), rgb(0, 19, 255, 0.7))'
 ]
 for(let i=0;i<pairBoxes.length;i++){
-  //pairBoxes[i].style.border="solid 2px "+borderColor[i]
-  pairBoxes[i].style.background=backgroundColor[i]
+   pairBoxes[i].style.background=backgroundColor[i]
 }
 let chosenNumberBox = []
 
@@ -113,7 +112,6 @@ function chosePairBox(){
   if(!isStarted || this.textContent != ''){
     return
   }
-  //numberBox.style.background = null
   chosenBox = this
   chosenNumber=[]
   chosenNumberBox.forEach(box => box.addEventListener('click',getNumber))
@@ -240,3 +238,21 @@ ceckTotal = ()=>{
     setTimeout(()=>{alert('YOU WON BY '+timeCount+' SECONDS!')},500)
   }
 }
+
+
+//how to play expan
+
+const expandsMore = document.querySelectorAll('[expand-more]')
+
+function expand(){
+  const descContent = document.getElementById(this.dataset.target)
+  if (descContent.classList.contains('expand-active')){
+    this.innerHTML = this.dataset.showtext
+  } else {
+    this.innerHTML = this.dataset.hidetext
+  }
+  descContent.classList.toggle('expand-active')
+}
+expandsMore.forEach(expandMore => {
+  expandMore.addEventListener('click', expand)
+})
